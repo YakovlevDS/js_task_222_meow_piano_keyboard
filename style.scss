@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&display=swap');
+
+
+* {
+  font-family: 'Pragati Narrow', sans-serif !important; 
+}
+
+$keyboard-white: #F7FFF7;
+$keyboard-white-shade: #E6F1E6;
+$keyboard-black: #1A535C;
+$keyboard-black-shade: #073B4C;
+$keyboard-label: rgba($keyboard-black, .5);
+
+$keyboard-white-width: 40px;
+$keyboard-black-width: 32px;
+$keyboard-white-height: 140px;
+$keyboard-black-height: 90px;
+
+$background:#4ECDC4;
+
+:root {
+  --keyboard-mode: #FF6B6B;
+  
+  background: $background;
+  overflow: hidden;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.keyandnote {
+   margin: 0 auto;
+  position: absolute;
+  bottom: 20%;
+}
+
+.keyboard {
+   font-size: 12px;
+  font-weight: 400;
+  display: inline-table;
+  padding: 24px;
+  border-radius: 20px 20px 40px 40px;
+  background: var(--keyboard-mode);
+  min-width: 884px;
+
+
+  button {
+    outline: none;
+    transition: all 100ms ease-out;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    color: $keyboard-label;
+    border-radius: 20px 20px 40px 40px;
+    cursor: none;
+   
+    &.white {
+      background:$keyboard-white;
+      width: $keyboard-white-width;
+      height: $keyboard-white-height;
+      box-shadow: inset $keyboard-white-shade 0 -10px 0 0;
+      padding-top: 80px;
+      margin: 1px;
+
+      &:hover {
+        // background: yellow;
+      }
+      &:active {
+        // background: pink;
+        box-shadow: inset $keyboard-white-shade 0 -2px 0 0;
+        transform: translate(0, 4px);
+      height: calc($keyboard-white-height - 8px);
+
+      }
+    }
+
+    &.black {
+      background:$keyboard-black;
+      width: $keyboard-black-width;
+      height: $keyboard-black-height;
+      z-index: 99;
+      position: absolute;
+      transform: translate($keyboard-black-width*-.5, -10px);
+      box-shadow: inset $keyboard-black-shade 0 -10px 0 0, var(--keyboard-mode) 0 0 0 2px;
+
+      
+      &:hover {
+        // background: darkblue;
+      }
+      &:active {
+        // background: pink;
+        transform: translate($keyboard-black-width*-.5, -2px);
+      height: calc($keyboard-black-height - 8px);
+
+        box-shadow: inset $keyboard-black-shade 0 -2px 0 0, var(--keyboard-mode) 0 0 0 2px;
+      }
+    }
+    
+    
+  }
+}
+
+#notes{
+    position: absolute;
+    bottom: 160px;
+
+
+  span {
+    border-radius: 100px;
+    position: absolute;
+    z-index: -1;
+    transform-origin: center bottom;
+
+    &.user {
+      background: var(--note-user);
+      height: $keyboard-white-width;
+    }
+    &.system {
+      background: var(--note-system);
+    }
+    
+    svg {
+      width: 100%;
+    }
+  }
+}
+
+#paw {
+  transform: scale(1.2);
+  z-index: 999;
+  position: absolute;
+  bottom: -120px;  
+  left: 500px;
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  transition: bottom 100ms ease, left 50ms ease, transform 100ms ease-out;
+  
+  svg {
+    display: none;
+
+  }
+  
+  &.up {
+    transform: translate(-50%, 0);
+    #open{
+      display: block;
+
+    }
+  }
+  &.down {
+    transform: translate(-50%, 8px);
+    #close {
+        display: block;
+    }
+  }
+}

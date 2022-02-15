@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&display=swap");
+* {
+  font-family: "Pragati Narrow", sans-serif !important;
+}
+
+:root {
+  --keyboard-mode: #FF6B6B;
+  background: #4ECDC4;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.keyandnote {
+  margin: 0 auto;
+  position: absolute;
+  bottom: 20%;
+}
+
+.keyboard {
+  font-size: 12px;
+  font-weight: 400;
+  display: inline-table;
+  padding: 24px;
+  border-radius: 20px 20px 40px 40px;
+  background: var(--keyboard-mode);
+  min-width: 884px;
+}
+.keyboard button {
+  outline: none;
+  transition: all 100ms ease-out;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  color: rgba(26, 83, 92, 0.5);
+  border-radius: 20px 20px 40px 40px;
+  cursor: none;
+}
+.keyboard button.white {
+  background: #F7FFF7;
+  width: 40px;
+  height: 140px;
+  box-shadow: inset #E6F1E6 0 -10px 0 0;
+  padding-top: 80px;
+  margin: 1px;
+}
+.keyboard button.white:active {
+  box-shadow: inset #E6F1E6 0 -2px 0 0;
+  transform: translate(0, 4px);
+  height: calc($keyboard-white-height - 8px);
+}
+.keyboard button.black {
+  background: #1A535C;
+  width: 32px;
+  height: 90px;
+  z-index: 99;
+  position: absolute;
+  transform: translate(-16px, -10px);
+  box-shadow: inset #073B4C 0 -10px 0 0, var(--keyboard-mode) 0 0 0 2px;
+}
+.keyboard button.black:active {
+  transform: translate(-16px, -2px);
+  height: calc($keyboard-black-height - 8px);
+  box-shadow: inset #073B4C 0 -2px 0 0, var(--keyboard-mode) 0 0 0 2px;
+}
+
+#notes {
+  position: absolute;
+  bottom: 160px;
+}
+#notes span {
+  border-radius: 100px;
+  position: absolute;
+  z-index: -1;
+  transform-origin: center bottom;
+}
+#notes span.user {
+  background: var(--note-user);
+  height: 40px;
+}
+#notes span.system {
+  background: var(--note-system);
+}
+#notes span svg {
+  width: 100%;
+}
+
+#paw {
+  transform: scale(1.2);
+  z-index: 999;
+  position: absolute;
+  bottom: -120px;
+  left: 500px;
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  transition: bottom 100ms ease, left 50ms ease, transform 100ms ease-out;
+}
+#paw svg {
+  display: none;
+}
+#paw.up {
+  transform: translate(-50%, 0);
+}
+#paw.up #open {
+  display: block;
+}
+#paw.down {
+  transform: translate(-50%, 8px);
+}
+#paw.down #close {
+  display: block;
+}
